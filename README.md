@@ -18,18 +18,6 @@ HashRouterLib is a lightweight and versatile JavaScript library for implementing
 
 To get started with HashRouterLib, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/HashRouterLib.git`
-
-2. Include the library in your project: `<script src="path/to/HashRouterLib.js"></script>`
-
-3. Set up your routes and start the router:
-
-   ```javascript
-        const router = new HashRouter();
-        router.addRoute('/', () => console.log('Home Page'));
-        router.addRoute('/about', () => console.log('About Page'));
-        router.start();
-
 1. Install HashRouterLib via npm:
 
 ```bash
@@ -42,11 +30,13 @@ OR
     yarn add @gen2tech/wc-hash-router
 ```
 
-- Import the library into your project:
+2. Import the library into your project:
   
 ```javascript
     import CreateWCRouter, { type RouteConfig } from '@gen2tech/wc-hash-router';
 ```
+
+3. Initialize wc-hash-router
 
 - There are two ways to initialize wc-hash-router
   
@@ -59,6 +49,7 @@ OR
     const router = CreateWCRouter('shr-wc-base','buildTime') // Default more on this
 ```
 
+4. Create routes
 ```javascript
     const routes: RouteConfig[] = [
         {
@@ -94,11 +85,16 @@ OR
             ]
         }
     ]
+```
 
+5. Add routes to the router
+```javascript
     // Add routes to the router
     router.addRoutes(routes)
+```
 
-    // Set middleware for before and after each route
+6. Set middleware for before and after each route
+```javascript
     router.beforeEachResolve((router, to, from) => {
         console.log(router, to, from)
         return true
