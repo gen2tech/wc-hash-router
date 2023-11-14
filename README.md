@@ -1,6 +1,6 @@
 # wc-hash-router
 
-HashRouterLib is a lightweight and versatile JavaScript library for implementing hash-based routing in web applications. This library is specifically designed for use with web components, providing a seamless and efficient way to handle client-side navigation.
+wc-hash-router is a lightweight and versatile JavaScript library for implementing hash-based routing in web applications. This library is specifically designed for use with web components, providing a seamless and efficient way to handle client-side navigation.
 
 ## Features
 
@@ -16,9 +16,9 @@ HashRouterLib is a lightweight and versatile JavaScript library for implementing
 
 ## Getting Started
 
-To get started with HashRouterLib, follow these steps:
+To get started with wc-hash-router, follow these steps:
 
-1. Install HashRouterLib via npm:
+1. Install wc-hash-router via npm:
 
 ```bash
 npm install @gen2tech/wc-hash-router
