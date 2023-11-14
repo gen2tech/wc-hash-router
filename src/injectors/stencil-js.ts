@@ -4,13 +4,13 @@ import { Router} from '../Router'
 import { type RouteType} from '../types'
 
 
-const loadWcStyle = (el: Element, style: string) => {
+const loadWcStyle = (hostEl: Element, style: string) => {
   const link = document.createElement('link')
   link.type = 'text/css'
   link.rel = 'stylesheet preload'
   link.href = style
   link.as = 'style'
-  el?.prepend(link)
+  hostEl?.prepend(link)
 }
 
 export const StylesInject = (styles?: string[]) => {
