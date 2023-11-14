@@ -21,19 +21,19 @@ To get started with HashRouterLib, follow these steps:
 1. Install HashRouterLib via npm:
 
 ```bash
-    npm install @gen2tech/wc-hash-router
+npm install @gen2tech/wc-hash-router
 ```
 
 OR
 
 ```bash
-    yarn add @gen2tech/wc-hash-router
+yarn add @gen2tech/wc-hash-router
 ```
 
 2. Import the library into your project:
   
 ```javascript
-    import CreateWCRouter, { type RouteConfig } from '@gen2tech/wc-hash-router';
+import CreateWCRouter, { type RouteConfig } from '@gen2tech/wc-hash-router';
 ```
 
 3. Initialize wc-hash-router
@@ -41,66 +41,66 @@ OR
 - There are two ways to initialize wc-hash-router
   
 ```javascript
-    const router = CreateWCRouter('shr-wc-base','runTime') // Manipulate DOM while routing
+const router = CreateWCRouter('shr-wc-base','runTime') // Manipulate DOM while routing
 ```
 OR  
 
 ```javascript
-    const router = CreateWCRouter('shr-wc-base','buildTime') // Default more on this
+const router = CreateWCRouter('shr-wc-base','buildTime') // Default more on this
 ```
 
 4. Create routes
 ```javascript
-    const routes: RouteConfig[] = [
-        {
-            path: '/',
-            name: 'Home',
-            element: `sample-two`, // Only Needed if on runTime
-            render: () => <sample-one /> // Only Needed if on buildTime
-        },
-        {
-            path: '/sample-one/:first/:middle?/:last?',
-            name: 'SampleOne',
-            element: `sample-one`,
-            render: ({ first, middle, last }) => <sample-one first={first} middle={middle} last={last} />
-        },
-        {
-            path: '/with-children',
-            name: 'ChildrenRoutes',
-            element: `with-children`,
-            render: ({prop}) => <with-children prop={prop}/>,
-            children: [
-                {
-                    path: 'child-one/:prop1?',
-                    name: 'ChildrenRoute.One',
-                    element: `child-one`,
-                    render: ({prop1}) => <child-one prop-1={prop1} />,
-                },
-                {
-                    path: 'child-two/:prop2',
-                    name: 'ChildrenRoute.Two',
-                    element: `child-two`,
-                    render: ({prop2}) => <child-two prop-2={prop2} />,
-                },
-            ]
-        }
-    ]
+const routes: RouteConfig[] = [
+    {
+        path: '/',
+        name: 'Home',
+        element: `sample-two`, // Only Needed if on runTime
+        render: () => <sample-one /> // Only Needed if on buildTime
+    },
+    {
+        path: '/sample-one/:first/:middle?/:last?',
+        name: 'SampleOne',
+        element: `sample-one`,
+        render: ({ first, middle, last }) => <sample-one first={first} middle={middle} last={last} />
+    },
+    {
+        path: '/with-children',
+        name: 'ChildrenRoutes',
+        element: `with-children`,
+        render: ({prop}) => <with-children prop={prop}/>,
+        children: [
+            {
+                path: 'child-one/:prop1?',
+                name: 'ChildrenRoute.One',
+                element: `child-one`,
+                render: ({prop1}) => <child-one prop-1={prop1} />,
+            },
+            {
+                path: 'child-two/:prop2',
+                name: 'ChildrenRoute.Two',
+                element: `child-two`,
+                render: ({prop2}) => <child-two prop-2={prop2} />,
+            },
+        ]
+    }
+]
 ```
 
 5. Add routes to the router
 ```javascript
     // Add routes to the router
-    router.addRoutes(routes)
+router.addRoutes(routes)
 ```
 
 6. Set middleware for before and after each route
 ```javascript
-    router.beforeEachResolve((router, to, from) => {
-        console.log(router, to, from)
-        return true
-    }).afterEachResolve((router, to) => {
-        console.log(router, to)
-    })
+router.beforeEachResolve((router, to, from) => {
+    console.log(router, to, from)
+    return true
+}).afterEachResolve((router, to) => {
+    console.log(router, to)
+})
 ```
 
 For more detailed information and examples, check out the documentation and example folder in this repository.
