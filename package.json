@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Web component hash based router",
   "author": "Ogunyemi Oludayo <ogunyemioludayo@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "main": "dist/index",
   "types": "dist/index.d.ts",

@@ -106,3 +106,11 @@ OR
         console.log(router, to)
     })
 ```
+
+For more detailed information and examples, check out the documentation and example folder in this repository.
+
+Contributing
+We welcome contributions! If you have ideas for improvements, new features, or bug fixes, feel free to open an issue or submit a pull request.
+
+License
+This project is licensed under the MIT License.
