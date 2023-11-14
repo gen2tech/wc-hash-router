@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!dist/index.cjs
+!dist/index.cjs.map
+!dist/index.mjs
+!dist/index.mjs.map
+!dist/index.d.ts
+!package.json
+!README.md

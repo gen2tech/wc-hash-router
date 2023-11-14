@@ -1,0 +1,36 @@
+{
+  "name": "@gen2tech/wc-hash-router",
+  "version": "0.0.1",
+  "description": "Web component hash based router",
+  "author": "Ogunyemi Oludayo <ogunyemioludayo@gmail.com>",
+  "license": "ISC",
+  "type": "module",
+  "main": "dist/index",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "clear-transpiled": "rimraf transpiled/*",
+    "build": "tsc && npx rollup -c rollup.config.js && yarn clear-transpiled",
+    "clear-build": "rimraf dist/* && yarn build",
+    "deploy": "yarn npm publish --access public"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@stencil/core": "^4.5.0",
+    "esbuild": "^0.19.5",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.3.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-esbuild": "^6.1.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  },
+  "packageManager": "yarn@4.0.2"
+}
