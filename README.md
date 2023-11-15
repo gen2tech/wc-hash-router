@@ -89,7 +89,6 @@ const routes: RouteConfig[] = [
 
 5. Add routes to the router
 ```javascript
-    // Add routes to the router
 router.addRoutes(routes)
 ```
 
