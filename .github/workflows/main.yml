@@ -17,5 +17,4 @@ jobs:
       - run: yarn build
       - run: yarn deploy
         env:
-          NPM_AUTH_TOKEN: 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
-          #NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
