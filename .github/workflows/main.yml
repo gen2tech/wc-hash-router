@@ -4,9 +4,7 @@ on:
 name: Publish wc-hash-router
 jobs:
   publish:
-    #environment: CI
-    CI:
-    name: CI
+    environment: CIs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
