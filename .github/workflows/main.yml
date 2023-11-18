@@ -4,7 +4,6 @@ on:
 name: Publish wc-hash-router
 jobs:
   publish:
-    environment: CI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,8 +14,4 @@ jobs:
       #- run: export NPM_AUTH_TOKEN=${{env.NODE_AUTH_TOKEN}}
       - run: mkdir dist
       - run: mkdir transpiled
-      - run: export NPM_AUTH_TOKEN=${{secrets.NPM_AUTH_TOKEN}} && yarn install
-      - run: yarn build
-      - run: yarn deploy
-        env:
-          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      - run: export NPM_AUTH_TOKEN=${{secrets.NPM_AUTH_TOKEN}} && yarn install && yarn build && yarn deploy
