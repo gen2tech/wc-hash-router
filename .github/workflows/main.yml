@@ -13,11 +13,11 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org/
         env:
-          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+          NPM_AUTH_TOKEN: ${{env.NPM_AUTH_TOKEN}}
       - run: mkdir dist
       - run: mkdir transpiled
       - run: yarn install
       - run: yarn build
       - run: yarn deploy
       - run: |
-          echo TOKEN-IS: '${secrets.NPM_AUTH_TOKEN}'
+          echo TOKEN-IS: '${env.NPM_AUTH_TOKEN}'
