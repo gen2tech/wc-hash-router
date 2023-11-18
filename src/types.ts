@@ -60,7 +60,6 @@ export interface NavigationGuardProps {
 export type NavigationGuard = (context: NavigationGuardContext) => boolean | undefined | void;
     
 export interface RouteContract {
-    id: Readonly<string>;
     name: RouteConfig['name'];
     path: RouteConfig['path'];
     element: RouteRuntimeConfig['element'];
@@ -72,16 +71,18 @@ export interface RouteContract {
     resolvedPath: RouteInternalConfig['resolvedPath'];
     keys: RouteInternalConfig['keys'];
     params: RouteInternalConfig['params'];
-    matcher: RouteInternalConfig['matcher'];
-    parent: RouteInternalConfig['parent'];
-    originalConfig: Readonly<RouteConfig>;
-    router: RouterContract;
     isActive: boolean;
 
+    isIndex(): boolean;
+    hasParent(): boolean;
+    getId(): string;
+    getOriginalConfig():RouteConfig
+    getParent(): RouteContract;
+    getRouter(): RouterContract;
+    getMatcher(): RegExp;
+    getPath(): string;
     setRouteActiveStatus(status: boolean): void;
     addParamValue(key: string | Record<string, any>, value: any): void;
-    hasParent(): boolean;
-    getParent(): RouteContract;
     isMatched(winLocPath?: string): boolean;
     extractParamsFromWinLocHash(winLocPath: string): false | Record<string, any>;
     getAllKeysForChildAndParent(keysFromChildTree: string[]): string[];

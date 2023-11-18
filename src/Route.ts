@@ -25,7 +25,7 @@ import {
 } from './utils'
 
 class Route implements RouteContract{
-    id: Readonly<string>
+    private id: Readonly<string>
     name: RouteConfig['name']
     path: RouteConfig['path']
     element: RouteRuntimeConfig['element']
@@ -36,10 +36,10 @@ class Route implements RouteContract{
     resolvedPath: RouteInternalConfig['resolvedPath']
     keys: RouteInternalConfig['keys']
     params: RouteInternalConfig['params']
-    matcher: RouteInternalConfig['matcher']
-    parent: RouteInternalConfig['parent']
-    originalConfig: Readonly<RouteConfig>
-    router: RouterContract
+    private matcher: RouteInternalConfig['matcher']
+    private parent: RouteInternalConfig['parent']
+    private originalConfig: Readonly<RouteConfig>
+    private router: RouterContract
     isActive: boolean = false
   
   constructor(router: RouterContract, route: RouteConfig, parent: RouteInternalConfig['parent']) {
@@ -76,10 +76,27 @@ class Route implements RouteContract{
     return new Route(this.router as RouterContract, this.originalConfig, this.parent);
   }
 
-  setRouteActiveStatus(status:boolean) {
-    this.isActive = status
-  }
+  isIndex() { return this.originalConfig.path == '' }
 
+  hasParent() { return !!this.parent }
+
+  getId() { return this.id }
+
+  getOriginalConfig() { return this.originalConfig as RouteConfig }
+  
+  getParent() { return this.parent as RouteContract }
+  
+  getRouter() { return this.router as RouterContract }
+  
+  getMatcher() { return this.matcher as RegExp }
+  
+  getPath(path?: string){
+    let routePath = path || this.path
+    return  routePath === '/' ? '' : trimPath(routePath)
+  }
+  
+  setRouteActiveStatus(status: boolean) { this.isActive = status }
+  
   addParamValue(key: string|Record<string, any>, value: any) {
     if(typeof key !== 'string'){
       this.params = {...this.params, ...key}
@@ -88,15 +105,8 @@ class Route implements RouteContract{
     }
   }
 
-  hasParent() { return !!this.parent }
-  getParent() {return this.parent as RouteContract}
+  //getRoutePathChunks(){getRouteFragments(this.path)}
 
-  getRoutePathChunks(){getRouteFragments(this.path)}
-
-  getPath(path?: string){
-    let routePath = path || this.path
-    return  routePath === '/' ? '' : trimPath(routePath)
-  }
 
   isMatched(winLocPath?:string){
     if (winLocPath) {

@@ -302,7 +302,15 @@ export class Router implements RouterContract {
 
   // This should run when hash changes
   load() {
-    const route = this.routes.find((route: RouteContract) => route.isMatched())
+    // Check if route is matched
+    let route = this.routes.find((route: RouteContract) => route.isMatched())
+    
+    // get route with empty path as index if route is parent and it has index
+    const indexRoute = this.routes.find((r: RouteContract) => r.getParent()?.getId() == route?.getId() && r.isIndex())
+    if (indexRoute) {
+      route = indexRoute
+    }
+
     if (route) {
       this.customEventDispatchers[EVENT_PROPS.beforeResolve]  = createRouterEvent(EVENT_PROPS.beforeResolve, {to:route, from:this.currentRouteInfo}) as () => boolean
       ; (async () => {
@@ -403,7 +411,7 @@ export class Router implements RouterContract {
     }).filter(p => p?.length > 0).join('/')
 
     hashPath = '/' + trimPath(hashPath)
-    if (route.matcher.test(hashPath)) {
+    if (route.getMatcher().test(hashPath)) {
       return hashPath
     }
     return false
@@ -427,7 +435,7 @@ export class Router implements RouterContract {
     let route: RouteContract = null!;
     route = this.routes.find((route: RouteContract) => route.path === path) as RouteContract
     if (!route) {
-      route = this.routes.find((r: RouteContract) => r.matcher.test(path)) as RouteContract
+      route = this.routes.find((r: RouteContract) => r.getMatcher().test(path)) as RouteContract
     }
     return route
   }
