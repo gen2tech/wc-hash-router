@@ -117,7 +117,7 @@ export const isRouteParam = (routePart: string) => routePart.startsWith(':')
    * Adapted from a comprehensive package https://github.com/pillarjs/path-to-regexp
    * 
    * @param path The path on which matcher is created
-   * @param strict When true the regexp won't allow an optional trailing delimiter to match. (default: false)
+   * @param strict When true the regexp won't allow an optional trailing delimiter to match. (default: true)
    * @param sensitive When true the regexp will be case sensitive. (default: false)
    * @param end When true the regexp will match to the end of the string. (default: true)
    * @returns 

@@ -11,7 +11,6 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
-      #- run: export NPM_AUTH_TOKEN=${{env.NODE_AUTH_TOKEN}}
       - run: mkdir dist
       - run: mkdir transpiled
       - run: export NPM_AUTH_TOKEN=${{secrets.NPM_AUTH_TOKEN}} && yarn install && yarn build && yarn deploy

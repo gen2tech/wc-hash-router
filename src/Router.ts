@@ -94,8 +94,8 @@ export class Router implements RouterContract {
    */
   onBeforeResolve(handler: EventListenerOrEventListenerObject): void | (() => void) {
     if (this.customEventDispatchers.hasOwnProperty(EVENT_PROPS.beforeResolve)) {
-      const removeEvent = handleRouterEvent(EVENT_PROPS.beforeResolve, handler, this.customEventDispatchers[EVENT_PROPS.beforeResolve])
-      return removeEvent
+      // Return the function to remove event listener
+      return handleRouterEvent(EVENT_PROPS.beforeResolve, handler, this.customEventDispatchers[EVENT_PROPS.beforeResolve])
     }
   }
 
@@ -108,8 +108,8 @@ export class Router implements RouterContract {
    */
   onAfterResolve(handler: EventListenerOrEventListenerObject): void | (() => void) {
     if (this.customEventDispatchers.hasOwnProperty(EVENT_PROPS.afterResolve)) {
-      const removeEvent = handleRouterEvent(EVENT_PROPS.afterResolve, handler, this.customEventDispatchers[EVENT_PROPS.afterResolve])
-      return removeEvent
+      // Return the function to remove event listener
+      return handleRouterEvent(EVENT_PROPS.afterResolve, handler, this.customEventDispatchers[EVENT_PROPS.afterResolve])
     }
   }
 
@@ -195,15 +195,6 @@ export class Router implements RouterContract {
   }
 
   start(){
-    // window.addEventListener('hashchange', () => {
-    //   const sampleOne = el?.shadowRoot?.querySelector('wc-router-view')
-    //   sampleOne?.appendChild(new DOMParser().parseFromString(`<p>My Web Component</p>`, 'text/html').body)
-    //   const vnode = hs('sample-one', {first: 'Oladele'})
-    //   sampleOne?.appendChild(vnode)
-    // })
-
-
-
     window.addEventListener('hashchange', () => this.load, false)
     window.addEventListener('load', () => this.load, false)
     return this
