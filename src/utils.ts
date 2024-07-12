@@ -155,7 +155,7 @@ export const isRouteParam = (routePart: string) => routePart.startsWith(':')
 
   export const getElementKeys = (path: string) => {
     const segments = getRouteFragments(path)
-    const keys = []
+    const keys:string[] = []
     for (let i = 0; i < segments.length; i++) {
       if (isRouteParam(segments[i])) {
         let segmentKey = segments[i].replace(/[:?]/g, '');
