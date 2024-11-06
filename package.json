@@ -1,6 +1,6 @@
 {
   "name": "@gen2tech/wc-hash-router",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Web component hash based router",
   "author": "Ogunyemi Oludayo <ogunyemioludayo@gmail.com>",
   "license": "MIT",
