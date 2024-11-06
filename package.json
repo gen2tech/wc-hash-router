@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^12.1.1",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@stencil/core": "^4.22.2",
     "esbuild": "^0.24.0",
     "rimraf": "^6.0.1",
