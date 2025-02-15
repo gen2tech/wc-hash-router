@@ -41,12 +41,12 @@ import CreateWCRouter, { type RouteConfig } from '@gen2tech/wc-hash-router';
 - There are two ways to initialize wc-hash-router
   
 ```javascript
-const router = CreateWCRouter('shr-wc-base','runTime') // Manipulate DOM while routing
+const router = CreateWCRouter('wc-element','runTime') // Manipulate DOM while routing
 ```
 OR  
 
 ```javascript
-const router = CreateWCRouter('shr-wc-base','buildTime') // Default more on this
+const router = CreateWCRouter('wc-element','buildTime') // Default more on this
 ```
 
 4. Create routes
