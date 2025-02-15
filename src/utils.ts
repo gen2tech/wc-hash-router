@@ -71,7 +71,7 @@ export const isRouteParam = (routePart: string) => routePart.startsWith(':')
   
   export const isRegexRouteParam = (routePart: string) => ![null, undefined, -1].includes(routePart.indexOf('[')) && ![null, undefined, -1].includes(routePart.lastIndexOf(']'))
 
-  export const extractRoutePartRegex = (part: string) => part.substring(part.indexOf('[') + 1, part.lastIndexOf(']'))
+  export const extractRegexFromRoutePart = (part: string) => part.substring(part.indexOf('[') + 1, part.lastIndexOf(']'))
   
   export const getRouteRegexParamName = (part: string) => part.substring(part.indexOf(':')+1, part.indexOf('['))
 
@@ -132,7 +132,7 @@ export const isRouteParam = (routePart: string) => routePart.startsWith(':')
         let defaultParamPattern = `/((?:[^/]+?))`;
 
         if (isRegexRouteParam(segments[i])) {
-          const segmentRegex = extractRoutePartRegex(segments[i]);
+          const segmentRegex = extractRegexFromRoutePart(segments[i]);
           defaultParamPattern = `/((?:${segmentRegex}))`;
         }
         if (isOptionalRouteParam(segments[i])) {

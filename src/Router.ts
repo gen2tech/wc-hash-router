@@ -252,7 +252,7 @@ export class Router implements RouterContract {
 
       if (routeConfig.hasOwnProperty('children')) {
         //TODO: deal with route's children eg append path to the path of each of the children and resolve parent before children
-        routeConfig.children?.forEach((child:RouteConfig)=> this.addRoute(child, route as RouteContract))
+        routeConfig.children?.forEach((child:RouteConfig) => this.addRoute(child, route as RouteContract))
       }
     }
     return this
